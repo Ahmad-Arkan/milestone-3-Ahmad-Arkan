@@ -1,0 +1,91 @@
+/* Parent */
+.navbar {
+  z-index: 1000;
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  right: 0.5rem;
+  background-color: rgba(var(--accent), var(--sub-translucent));
+  backdrop-filter: var(--backdrop-content);
+  border-radius: var(--border-radius);
+}
+.menu1 {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: rgba(var(--accent), var(--translucent));
+  border-radius: var(--border-radius);
+}
+.menu2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu2 div {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+.menu2 button {
+  height: max-content;
+  padding: 0.2rem;
+  font-size: 0.8rem;
+}
+
+/* Title */
+.title {
+  margin-right: 1rem;
+  font-size: 1.7rem;
+  font-weight: 500;
+  font-family: var(--font-alan);
+  color: var(--background);
+}
+
+/* Searchbar */
+.searchBar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgba(var(--background), var(--translucent));
+  border-radius: var(--sub-border-radius);
+}
+.searchBar:focus-within {
+  box-shadow: var(--hover-shadow);
+}
+.searchBar label {
+  width: 100%;
+  padding: 0.5rem 0.8rem;
+}
+.searchBar label input {
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: normal;
+}
+
+/* Account */
+.account {
+  display: inherit;
+  flex-direction: inherit;
+  justify-content: inherit;
+  align-items: inherit;
+  gap: inherit;
+}
+.account button {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.account button:nth-last-child(1) {
+  background-color: rgba(var(--background), var(--translucent));
+  border-radius: var(--sub-border-radius);
+}
+.account button:nth-last-child(1):hover {
+  box-shadow: var(--hover-shadow);
+}
+
+/* Other Menu */
