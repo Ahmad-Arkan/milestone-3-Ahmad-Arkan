@@ -9,11 +9,6 @@ export default function Home() {
     <>
       <Items />
       <ThemeToggle />
-      <h1>aaaaaaaaaaaaaaaaaa</h1>
-      <p>aaa</p>
-      <form>
-        <input type="text"></input>
-      </form>
     </>
   );
 }

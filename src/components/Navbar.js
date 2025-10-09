@@ -13,12 +13,13 @@ export default function Navbar () {
     e.preventDefault();
     if (!keyword.trim()) return;
     router.push(`/search?keyword=${encodeURIComponent(keyword)}`);
+    setKeyword('')
   };
 
   return (
     <nav className={styles.navbar}>
       <menu className={styles.menu1}>
-        <span className={styles.title}>RevoStore</span>
+        <Link href="/" className={styles.title}>RevoStore</Link>
         <form className={styles.searchBar} onSubmit={handleSearchChange}>
           <label>
             <input 

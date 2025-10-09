@@ -10,6 +10,6 @@ export default async function SearchPage({ searchParams }) {
   );
 
   return (
-    <ProductsList searchParam={searchParams.keyword} searchProducts={filtered} />
+    <ProductsList searchParam={searchParams.keyword} productsData={filtered} />
   );
 }
