@@ -109,8 +109,8 @@ img {
 
 /* NPROGRESS */
 #nprogress .bar {
-  background: rgb(var(--accent));
-  height: 5px;
+  background: rgb(var(--accent)) !important;
+  height: 5px !important;
 }
 
 #nprogress .peg {

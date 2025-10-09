@@ -13,7 +13,7 @@ export default function Navbar () {
     e.preventDefault();
     if (!keyword.trim()) return;
     router.push(`/search?keyword=${encodeURIComponent(keyword)}`);
-    setKeyword('')
+    // setKeyword('')
   };
 
   return (
@@ -35,10 +35,10 @@ export default function Navbar () {
         <button>
           <Link href="/cart"><Icon name="cart" className={styles.logo} /></Link>
         </button>
-        <div className={styles.account}>
+        {/* <div className={styles.account}>
           <button>Sign Up</button>
           <button>Login</button>
-        </div>
+        </div> */}
       </menu>
       <menu className={styles.menu2}>
         <div className={styles.suggestions}>

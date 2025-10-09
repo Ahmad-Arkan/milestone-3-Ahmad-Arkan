@@ -1,14 +1,17 @@
 "use client";
 
 import { getProducts } from "@/libraries/api"
+import { CartContext } from "@/contexts/CartProvider";
 import styles from "@/styles/ProductsList.module.css";
 import Icon from "@/components/Icons";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Items ({title, searchParam, productsData}) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     if (searchParam) {
@@ -40,11 +43,11 @@ export default function Items ({title, searchParam, productsData}) {
         </h1>
         <h2></h2>
       </menu>
-      <ul className={styles.products}>
+      <ul className={styles.parent}>
         {products.map((products) => (
           <li className={styles.product} key={products.id}>
             <Link href={`/${products.id}`}>
-              <img 
+              <Image
                 src={products.image || "/images/default-product.webp"}
                 alt={products.title}
                 width={100}
@@ -52,6 +55,7 @@ export default function Items ({title, searchParam, productsData}) {
                 onError={(e) => {
                   e.currentTarget.src = "/images/default-product.webp";
                 }}
+                unoptimized
               />
             </Link>
             <div className={styles.details}>
@@ -62,7 +66,7 @@ export default function Items ({title, searchParam, productsData}) {
                 <Link className={`${styles.price}`} key={products.id} href={`/${products.id}`}>
                   ${products.price || "???"}
                 </Link>
-                <Icon name="addCard" className={styles.addCard} />
+                <button onClick={() => addToCart(products)} className={styles.addCard}><Icon name="addCard" /></button>
               </div>
             </div>
           </li>

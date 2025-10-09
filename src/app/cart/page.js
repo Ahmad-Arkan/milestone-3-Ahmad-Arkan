@@ -1,5 +1,8 @@
-export const dynamic = "force-dynamic";
+import React from 'react'
+import CartList from '@/components/CartList'
 
-export default function CartPage() {
-  return <div>Cart page under maintenance</div>;
+export default function Cart() {
+  return (
+    <CartList />
+  )
 }

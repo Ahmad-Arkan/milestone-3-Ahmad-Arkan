@@ -1,20 +1,10 @@
-'use client';
+"use client";
+import "@/app/globals.css";
 
-import { useEffect } from 'react';
-import { usePathname } from 'next/navigation';
-import NProgress from 'nprogress';
+import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 
 export default function LoadingBar() {
-  const pathname = usePathname();
-
-  useEffect(() => {
-    NProgress.start();
-    const timer = setTimeout(() => {
-      NProgress.done();
-    }, 400);
-
-    return () => clearTimeout(timer);
-  }, [pathname]);
-
-  return null;
+  return (
+    <ProgressBar shallowRouting/>
+  );
 }

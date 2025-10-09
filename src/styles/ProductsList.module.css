@@ -12,7 +12,7 @@
   font-weight: normal;
 }
 
-.products {
+.parent {
   padding: 1rem 0 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -87,6 +87,9 @@
   justify-content: center;
   align-items: center;
   border-radius: var(--sub-border-radius);
+}
+.product .addCard div {
+  color: rgb(var(--accent));
 }
 .addCard:hover {
   background-color: beige;

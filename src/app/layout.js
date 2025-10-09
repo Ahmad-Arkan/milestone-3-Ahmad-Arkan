@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local"
 import "./globals.css";
+import CartProvider from "@/contexts/CartProvider";
 import LoadingBar from "@/components/LoadingBar";
 import Navbar from "@/components/Navbar";
 
@@ -45,9 +46,11 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${alanSans.variable}`}>
-        <LoadingBar />
-        <Navbar />
-        {children}
+        <CartProvider>
+          <LoadingBar />
+          <Navbar />
+          {children}
+        </CartProvider>
       </body>
     </html>
   );
