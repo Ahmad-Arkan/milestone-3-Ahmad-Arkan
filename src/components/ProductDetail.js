@@ -20,9 +20,11 @@ function ProductDetail({product}) {
         <h1 className={styles.title}>{product.title}</h1>
         <h2 className={styles.description}>{product.description}</h2>
         <p className={styles.category}>Category : <span>{product.category}</span></p>
+        <h1 className={styles.price}>${product.price}</h1>
       </div>
       <div className={styles.actions}>
-        <h1 className={styles.price}>${product.price}</h1>
+        <button>Buy Now</button>
+        <button>Add to Cart</button>
       </div>
     </section>
   )

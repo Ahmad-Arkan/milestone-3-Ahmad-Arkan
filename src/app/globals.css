@@ -3,14 +3,14 @@
 /* GLOBAL VARIABLE */
 :root {
   --background: 255, 255, 255;
-  --foreground: #171717;
+  --foreground: 23, 23, 23;
   --accent: 230, 179, 37;
   --border-radius: 0.5rem;
   --sub-border-radius: 0.25rem;
   --backdrop-content: blur(30px);
   --hover-color: #ffffffba;
   --hover-shadow: #00000030 0 10px 15px;
-  --box-shadow: #55555530 0 3px 100px;
+  --box-shadow: #34343443 0 3px 100px;
   --translucent: 70%;
   --sub-translucent: 30%;
 }
@@ -89,6 +89,10 @@ a:active, button:active {
   filter: opacity(0.75);
   border-radius: var(--sub-border-radius);
   transition: filter 0.2s;
+}
+
+ul > li {
+  list-style: none;
 }
 
 svg {

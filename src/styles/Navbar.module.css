@@ -68,6 +68,22 @@
   font-weight: normal;
 }
 
+/* Cart Button */
+.cart {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Account */
 .account {
   display: inherit;

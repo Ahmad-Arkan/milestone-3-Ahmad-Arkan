@@ -19,7 +19,7 @@ export default function Navbar () {
   return (
     <nav className={styles.navbar}>
       <menu className={styles.menu1}>
-        <Link href="/" className={styles.title}>RevoStore</Link>
+        <Link href="/" className={styles.title}>RevoShop</Link>
         <form className={styles.searchBar} onSubmit={handleSearchChange}>
           <label>
             <input 
@@ -32,7 +32,7 @@ export default function Navbar () {
             <Icon name="search" />
           </button>
         </form>
-        <button>
+        <button className={styles.cart}>
           <Link href="/cart"><Icon name="cart" className={styles.logo} /></Link>
         </button>
         {/* <div className={styles.account}>

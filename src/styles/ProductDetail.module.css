@@ -1,8 +1,6 @@
 .parent {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  flex-direction: row;
-  gap: 2rem;
 }
 
 .parent img {
@@ -25,6 +23,16 @@
   height: 10rem;
   padding: 2rem;
   grid-column: 2;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.actions button {
+  color: rgb(var(--background));
+  background-color: rgba(var(--foreground), var(--translucent));
+}
+.actions button:nth-child(1) {
+  background-color: rgb(var(--accent));
 }
 
 .title {
