@@ -1,5 +1,11 @@
-export default function Icon ({ name, className }) {
-  const icons = {
+type IconProps = {
+  name: string;
+  className?: string;
+};
+
+
+export default function Icon ({ name, className }: IconProps) {
+  const icons: Record<string, React.ReactNode> = {
     logo: (
       <svg viewBox="0 0 1500 1500" xmlns="http://www.w3.org/2000/svg">
         <path d="M1290.07 643C1332.91 643.001 1355.91 693.351 1327.87 725.733L787.796 1349.36C767.857 1372.38 732.141 1372.38 712.203 1349.36L172.129 725.733C144.085 693.351 167.088 643 209.926 643H1290.07ZM671.984 204.291C712.015 154.37 787.984 154.37 828.015 204.291L1160.91 619.442C1164.43 623.831 1167.5 628.365 1170.15 633H1043.61L750 266.85L456.393 633H329.846C332.339 628.635 335.209 624.36 338.475 620.21L339.086 619.442L671.984 204.291Z" fill="currentColor"/>

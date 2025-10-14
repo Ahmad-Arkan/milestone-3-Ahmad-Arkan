@@ -6,8 +6,16 @@ import styles from "@/styles/CartList.module.css"
 import Link from "next/link";
 import Image from "next/image";
 
+type CartListType = {
+  cart: any;
+  removeFromCart?: (id: number) => void;
+  clearCart?: () => void;
+  increaseQty?: (id: number) => void;
+  decreaseQty?: (id: number) => void;
+};
+
 export default function CartList() {
-  const { cart, removeFromCart, clearCart, increaseQty, decreaseQty } = useContext(CartContext);
+  const { cart, removeFromCart, clearCart, increaseQty, decreaseQty }:CartListType = useContext(CartContext);
 
   if (cart.length === 0) {
     return (

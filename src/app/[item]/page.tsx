@@ -6,10 +6,6 @@ export default async function ProductDetailPage({ params }) {
   const { item } = await params;
   const product = await getProduct(item);
 
-  const handleAdd = () => {
-    console.log("Tambah produk:", product.title);
-  };
-
   return (
     <div>
       <ProductDetail product={product} />

@@ -1,8 +1,13 @@
 "use client";
 
+type CartContextType = {
+  cart: any[];
+  addToCart: (item: any) => void;
+};
+
 import { createContext, useState, useEffect } from "react";
 
-export const CartContext = createContext({})
+export const CartContext = createContext<CartContextType | null>(null)
 
 export default function CartProvider ({ children }) {
   const [cart, setCart] = useState(() => {

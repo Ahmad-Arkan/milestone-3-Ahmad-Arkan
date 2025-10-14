@@ -8,9 +8,15 @@ import { useEffect, useState, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Items ({title, searchParam, productsData}) {
+type ProductsType = {
+  title?: string,
+  searchParam?: string,
+  productsData?: any
+}
+
+export default function Items ({title, searchParam, productsData}: ProductsType) {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const { addToCart } = useContext(CartContext);
 
   useEffect(() => {

@@ -6,14 +6,13 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Navbar () {
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState<string>('');
   const router = useRouter()
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (!keyword.trim()) return;
     router.push(`/search?keyword=${encodeURIComponent(keyword)}`);
-    // setKeyword('')
   };
 
   return (
