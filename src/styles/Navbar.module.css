@@ -8,6 +8,7 @@
   background-color: rgba(var(--accent), var(--sub-translucent));
   backdrop-filter: var(--backdrop-content);
   border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
 }
 .menu1 {
   padding: 1rem;

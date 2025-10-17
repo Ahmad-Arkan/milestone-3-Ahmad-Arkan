@@ -2,6 +2,7 @@
 
 /* GLOBAL VARIABLE */
 :root {
+  --body: 243, 243, 243;
   --background: 255, 255, 255;
   --foreground: 23, 23, 23;
   --accent: 230, 179, 37;
@@ -10,7 +11,7 @@
   --backdrop-content: blur(30px);
   --hover-color: #ffffffba;
   --hover-shadow: #00000030 0 10px 15px;
-  --box-shadow: #34343443 0 3px 100px;
+  --box-shadow: #34343443 0 3px 10px;
   --translucent: 70%;
   --sub-translucent: 30%;
 }
@@ -40,7 +41,7 @@ body {
   flex-direction: column;
   align-items: center;
   color: var(--foreground);
-  background: var(--background);
+  background: rgb(var(--body));
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

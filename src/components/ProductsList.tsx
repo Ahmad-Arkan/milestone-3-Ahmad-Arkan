@@ -15,7 +15,7 @@ type ProductsType = {
 }
 
 export default function Items ({title, searchParam, productsData}: ProductsType) {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const { addToCart } = useContext(CartContext);
 
@@ -54,7 +54,11 @@ export default function Items ({title, searchParam, productsData}: ProductsType)
           <li className={styles.product} key={products.id}>
             <Link href={`/${products.id}`}>
               <Image
-                src={products.image || "/images/default-product.webp"}
+                src={
+                  products?.images?.[0]?.startsWith('https://placehold.co/')
+                    ? '/images/default-product.webp'
+                    : products.images[0]
+                }
                 alt={products.title}
                 width={100}
                 height={100}
