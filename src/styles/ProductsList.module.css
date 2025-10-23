@@ -16,7 +16,7 @@
 .parent {
   padding: 1rem 0 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
 }
 
@@ -37,7 +37,7 @@
   width: 100%;
   height: auto;
   aspect-ratio: 1 / 1;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: var(--border-radius);
 }
 

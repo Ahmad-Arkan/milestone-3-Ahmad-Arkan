@@ -1,5 +1,6 @@
 "use client";
 
+import { ProductResponse, ProductsType } from "@/types/product"
 import { getProducts } from "@/libraries/api"
 import { CartContext } from "@/contexts/CartProvider";
 import styles from "@/styles/ProductsList.module.css";
@@ -7,12 +8,6 @@ import Icon from "@/components/Icons";
 import { useEffect, useState, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
-
-type ProductsType = {
-  title?: string,
-  searchParam?: string,
-  productsData?: any
-}
 
 export default function Items ({title, searchParam, productsData}: ProductsType) {
   const [products, setProducts] = useState<any>([]);
@@ -50,7 +45,7 @@ export default function Items ({title, searchParam, productsData}: ProductsType)
         <h2></h2>
       </menu>
       <ul className={styles.parent}>
-        {products.map((products) => (
+        {products.map((products: ProductResponse) => (
           <li className={styles.product} key={products.id}>
             <Link href={`/${products.id}`}>
               <Image
@@ -76,7 +71,14 @@ export default function Items ({title, searchParam, productsData}: ProductsType)
                 <Link className={`${styles.price}`} key={products.id} href={`/${products.id}`}>
                   ${products.price || "???"}
                 </Link>
-                <button onClick={() => addToCart(products)} className={styles.addCard}><Icon name="addCard" /></button>
+                <button
+                  onClick={() => {
+                    addToCart(products);
+                    alert('The product has added to cart.');
+                  }}
+                  className={styles.addCard}>
+                    <Icon name="addCard" />
+                </button>
               </div>
             </div>
           </li>

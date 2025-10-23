@@ -1,10 +1,12 @@
 "use client";
-import React from 'react'
+import React, { useContext } from 'react'
 import Image from 'next/image'
 import styles from '@/styles/ProductDetail.module.css'
+import { CartContext } from "@/contexts/CartProvider";
 
 function ProductDetail({product}) {
-  console.log("addd", product)
+  const { addToCart } = useContext(CartContext);
+
   return (
     <section className={styles.parent}>
       <Image
@@ -28,8 +30,14 @@ function ProductDetail({product}) {
         <h1 className={styles.price}>${product.price}</h1>
       </div>
       <div className={styles.actions}>
-        <button>Buy Now</button>
-        <button>Add to Cart</button>
+        <button onClick={() => alert('Sorry, this feature is not available yet.')}>Buy Now</button>
+        <button
+          onClick={() => {
+            addToCart(product);
+            alert('The product has added to cart.');
+          }}>
+          Add to Cart
+        </button>
       </div>
     </section>
   )

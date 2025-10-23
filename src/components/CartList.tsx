@@ -2,6 +2,7 @@
 
 import { useContext } from "react";
 import { CartContext } from "@/contexts/CartProvider";
+import { ProductResponse } from "@/types/product"
 import styles from "@/styles/CartList.module.css"
 import Link from "next/link";
 import Image from "next/image";
@@ -12,28 +13,24 @@ type CartListType = {
   clearCart?: () => void;
   increaseQty?: (id: number) => void;
   decreaseQty?: (id: number) => void;
-};
+}
+
+interface CartMap extends ProductResponse {
+  quantity: number;
+}
 
 export default function CartList() {
   const { cart, removeFromCart, clearCart, increaseQty, decreaseQty }:CartListType = useContext(CartContext);
 
-  if (cart.length === 0) {
-    return (
-      <section>
-        <h1 className={styles.title}>Your cart is empty 🛒</h1>
-      </section>
-    );
-  }
-
   return (
     <section>
-      <h1 className={styles.title}>Your Cart</h1>
+      <h1 className={styles.title}>{cart.length === 0? `Your cart is empty 🛒` : `Your Cart`}</h1>
       <ul className={styles.parent}>
-        {cart.map((item) => (
+        {cart.map((item: CartMap) => (
           <li className={styles.cartItem} key={item.id}>
             <Link className={styles.cartDetail} href={`/${item.id}`}>
               <Image
-                src={item.image || "/images/default-product.webp"}
+                src={item.images[0] || "/images/default-product.webp"}
                 alt={item.title}
                 width={100}
                 height={100}
@@ -47,29 +44,15 @@ export default function CartList() {
                 <p>${item.price}</p>
               </div>
             </Link>
-            <div>
+            <div className={styles.quantity}>
               <button onClick={() => decreaseQty(item.id)}>-</button>
               <span>{item.quantity}</span>
               <button onClick={() => increaseQty(item.id)}>+</button>
             </div>
-            <button onClick={() => removeFromCart(item.id)}>Remove</button>
+            <button onClick={() => removeFromCart(item.id)} className={'delete'}>Remove</button>
           </li>
         ))}
       </ul>
-
-      <button
-        style={{
-          marginTop: "1rem",
-          padding: "0.5rem 1rem",
-          background: "red",
-          color: "white",
-          border: "none",
-          borderRadius: "0.5rem",
-        }}
-        onClick={clearCart}
-      >
-        Clear Cart
-      </button>
     </section>
   );
 }

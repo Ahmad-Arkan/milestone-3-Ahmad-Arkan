@@ -34,10 +34,11 @@ export default function Navbar () {
         <button className={styles.cart}>
           <Link href="/cart"><Icon name="cart" className={styles.logo} /></Link>
         </button>
-        {/* <div className={styles.account}>
-          <button>Sign Up</button>
-          <button>Login</button>
-        </div> */}
+        <div className={styles.account}>
+          <Link href="/admin"><button>Admin Page</button></Link>
+          {/* <button>Sign Up</button>
+          <button>Login</button> */}
+        </div>
       </menu>
       <menu className={styles.menu2}>
         <div className={styles.suggestions}>

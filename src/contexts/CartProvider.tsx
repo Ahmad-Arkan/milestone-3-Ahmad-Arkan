@@ -18,12 +18,12 @@ export default function CartProvider ({ children }) {
     return [];
   });
 
-  const addToCart = (item) => {
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((i) => i.id === item.id);
+  const addToCart = (item: any) => {
+    setCart((prevCart: any) => {
+      const existingItem = prevCart.find((i: any) => i.id === item.id);
 
       if (existingItem) {
-        return prevCart.map((i) =>
+        return prevCart.map((i: any) =>
           i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
         );
       } else {
@@ -32,21 +32,21 @@ export default function CartProvider ({ children }) {
     });
   };
 
-  const removeFromCart = (id) => {
-    setCart((prev) => prev.filter((item) => item.id !== id));
+  const removeFromCart = (id: any) => {
+    setCart((prev: any) => prev.filter((item: any) => item.id !== id));
   };
 
-  const increaseQty = (id) => {
-    setCart((prev) =>
-      prev.map((item) =>
+  const increaseQty = (id: any) => {
+    setCart((prev: any) =>
+      prev.map((item: any) =>
         item.id === id ? { ...item, quantity: item.quantity + 1 } : item
       )
     );
   };
 
-  const decreaseQty = (id) => {
-    setCart((prev) =>
-      prev.map((item) =>
+  const decreaseQty = (id: any) => {
+    setCart((prev: any) =>
+      prev.map((item: any) =>
         item.id === id
           ? { ...item, quantity: item.quantity > 1 ? item.quantity - 1 : 1 }
           : item
