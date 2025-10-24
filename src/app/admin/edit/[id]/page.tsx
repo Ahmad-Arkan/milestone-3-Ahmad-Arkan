@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { getProduct } from "@/libraries/api";
 import { ProductResponse } from '@/types/product'
 import styles from '@/styles/EditPage.module.css'
+import Link from "next/link";
 
 export default function EditPage() {
   const [title, setTitle] = useState("")
@@ -76,7 +77,8 @@ export default function EditPage() {
           <textarea name={description} value={description} onChange={(e) => setDescription(e.target.value)} id="description" placeholder=" " />
           <span>Description</span>
         </label>
-        <button>Submit</button>
+        <Link href={'/admin'}><button className={'delete'}>Cancel</button></Link>
+        <button className={'button'}>Submit</button>
       </form>
     </section>
   );

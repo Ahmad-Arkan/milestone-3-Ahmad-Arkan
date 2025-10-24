@@ -16,25 +16,25 @@ export default function Home() {
         id: 1,
         image: 'https://i.imgur.com/ZANVnHE.jpeg',
         name: 'Electronics',
-        link: 'http://ahmadrka.com'
+        link: 'http://'
       },
       {
         id: 2,
         name: 'Clothes',
         image: 'https://i.imgur.com/QkIa5tT.jpeg',
-        link: 'http://ahmadrka.com'
+        link: 'http://'
       },
       {
         id: 3,
         name: 'Furnitures',
         image: 'https://i.imgur.com/Qphac99.jpeg',
-        link: 'http://ahmadrka.com'
+        link: 'http://'
       },
       {
         id: 4,
         name: 'Miscellaneous',
         image: 'https://i.imgur.com/BG8J0Fj.jpg',
-        link: 'http://ahmadrka.com'
+        link: 'http://'
       },
     ]
   }

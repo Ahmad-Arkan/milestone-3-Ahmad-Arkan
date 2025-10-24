@@ -15,10 +15,14 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 0.1rem solid rgba(var(--foreground), var(--sub-translucent));
 }
 .product:nth-last-child(1) {
   border: none;
+}
+.product button:nth-last-child(1) {
+  margin-left: 0.5rem;
 }
 
 .details {

@@ -11,16 +11,34 @@ export default function ProductManagement() {
   const [products, setProducts] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
+  const handleDelete = async (productId)=> {
+    const confirmDelete = confirm(`Are you sure to delete this product with ID ${productId}?`);
+    if (!confirmDelete) return;
+    try {
+      const res = await fetch(`https://api.escuelajs.co/api/v1/products/${productId}`, {
+        method: "DELETE"
+      })
+
+      if (!res.ok) {
+        const errText = await res.text()
+        console.error("Server responded:", res.status, errText)
+        throw new Error("Update failed")
+      }
+
+      alert(`Product with ID ${productId} has been deleted.`)
+      const updated = await res.json()
+      console.log("updated",updated)
+    } catch (err) {
+      console.error("Error", err)
+    }
+  }
+
   useEffect(()=> {
     getProducts().then((data) => {
       setProducts(data);
       setLoading(false);
     })
-  })
-
-  const handleDelete = ()=> {
-    
-  }
+  }, [handleDelete])
 
   return (
     <section>
@@ -54,8 +72,8 @@ export default function ProductManagement() {
                 </Link>
               </div>
             </div>
-            <Link href={`/admin/edit/${products.id}`}><button>Edit</button></Link>
-            <button onClick={handleDelete}>Delete</button>
+            <Link href={`/admin/edit/${products.id}`}><button className={'button'}>Edit</button></Link>
+            <button onClick={()=>handleDelete(products.id)} className={'delete'}>Delete</button>
           </li>
         ))}
       </ul>

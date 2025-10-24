@@ -111,6 +111,12 @@ img {
   color: rgb(var(--accent))
 }
 
+.button {
+  color: rgb(var(--background));
+  background-color: rgba(var(--foreground), var(--translucent)) !important;
+  border-radius: var(--sub-border-radius);
+}
+
 .delete {
   color: rgb(var(--background));
   background-color: rgb(var(--error)) !important;
