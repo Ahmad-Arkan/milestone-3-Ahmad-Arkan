@@ -101,7 +101,7 @@ svg {
   width: 1.8rem;
 }
 
-input {
+input, textarea {
   background-color: transparent;
   border: none;
   outline: none;

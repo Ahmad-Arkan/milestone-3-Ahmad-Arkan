@@ -7,7 +7,7 @@ const paginations = {
 }
 
 // Products Fetching API
-export async function getProducts():Promise<ProductResponse> {
+export async function getProducts():Promise<ProductResponse[]> {
   try {
     const response = await fetch(`${DATABASE_API}/products?offset=${paginations.offset}&limit=${paginations.limit}`);
     return response.json();

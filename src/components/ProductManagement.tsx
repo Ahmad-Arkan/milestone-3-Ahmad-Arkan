@@ -18,6 +18,10 @@ export default function ProductManagement() {
     })
   })
 
+  const handleDelete = ()=> {
+    
+  }
+
   return (
     <section>
       <h1 className={styles.title}>Product Management List</h1>
@@ -50,7 +54,8 @@ export default function ProductManagement() {
                 </Link>
               </div>
             </div>
-            
+            <Link href={`/admin/edit/${products.id}`}><button>Edit</button></Link>
+            <button onClick={handleDelete}>Delete</button>
           </li>
         ))}
       </ul>

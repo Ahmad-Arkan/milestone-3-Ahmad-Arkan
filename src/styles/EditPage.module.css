@@ -1,0 +1,42 @@
+.parent {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.parent label {
+  margin: 0.2rem;
+  padding: 0.5rem;
+  display: flex;
+  border: 0.1rem solid rgba(var(--foreground), var(--sub-translucent));
+  border-radius: var(--sub-border-radius);
+}
+.parent label:focus-within {
+  border: 0.1rem solid rgba(var(--foreground), var(--translucent));
+}
+
+.parent label input,
+.parent label textarea {
+  width: 100%;
+  font-size: 1rem;
+}
+
+.parent label textarea {
+  height: 6rem;
+  min-height: 6rem;
+  resize: vertical;
+}
+
+.parent label span {
+  position: absolute;
+  color: rgba(var(--foreground), var(--translucent));
+  background-color: rgb(var(--background));
+  transition: font-size 0.1s, transform 0.1s;
+}
+.parent label:focus-within span,
+.parent label input:not(:placeholder-shown) + span,
+.parent label textarea:not(:placeholder-shown) + span {
+  font-size: 0.8rem;
+  transform: translateY(-17px);
+}
