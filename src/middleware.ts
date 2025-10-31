@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
   const privatePages = ['/admin/*', '/admin']
-  const auth : boolean = true
+  const auth : boolean = false // Simulated authenticator redirect
 
   if (privatePages.includes(pathname) && !auth) {
     return NextResponse.redirect(new URL('/auth', request.url))

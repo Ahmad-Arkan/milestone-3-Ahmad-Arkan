@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import styles from '@/styles/EditPage.module.css'
 import { login } from '@/libraries/auth'
-import { cookies } from 'next/headers'
 
 export default async function Auth() {
   const [email, setEmail] = useState('john@mail.com')
