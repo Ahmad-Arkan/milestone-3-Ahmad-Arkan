@@ -12,7 +12,8 @@
     "next-nprogress-bar": "^2.4.7",
     "nprogress": "^0.2.0",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "swr": "^2.3.6"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",

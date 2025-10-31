@@ -8,27 +8,34 @@ import Icon from "@/components/Icons";
 import { useEffect, useState, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import useSWR, { mutate } from "swr";
 
-export default function Items ({title, searchParam, productsData}: ProductsType) {
+export default function Items ({title, searchParam}: ProductsType) {
   const [products, setProducts] = useState<any>([]);
-  const [loading, setLoading] = useState<boolean>(true);
   const { addToCart } = useContext(CartContext);
 
+  const { data: productsData, error, isLoading } = useSWR(
+    'products',          // key unik
+    getProducts,         // helper function
+    {
+      revalidateOnFocus: true,
+    }
+  );
+
   useEffect(() => {
+    if (!productsData) return;
+
     if (searchParam) {
-      if (productsData?.length > 0) setProducts(productsData);
-      else if (productsData?.length === 0) setProducts([]);
-      setLoading(false);
+      // misal filter produk sesuai keyword pencarian
+      const filtered = productsData.filter(p =>
+        p.title.toLowerCase().includes(searchParam.toLowerCase())
+      );
+      setProducts(filtered);
     } else {
-      getProducts().then((data) => {
-        setProducts(data);
-        setLoading(false);
-      });
+      // kalau tidak ada pencarian, tampilkan semua
+      setProducts(productsData);
     }
   }, [productsData, searchParam]);
-
-  
-  if (loading) return null;
 
   return (
     <section>
@@ -37,7 +44,7 @@ export default function Items ({title, searchParam, productsData}: ProductsType)
           {title
             ? title
             : searchParam
-              ? productsData?.length > 0
+              ? products?.length > 0
                 ? <>Result for: <span className="keyword">"{searchParam}"</span></>
                 : <>Result not found for <span className="keyword">"{searchParam}"</span><br /><span className={styles.description}>Try different keyword</span></>
               : "All Products"}
