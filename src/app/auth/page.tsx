@@ -12,7 +12,7 @@ export default async function Auth() {
     const data = await login(email, password);
     console.log(data);
 
-    setC
+    
   }
 
 
