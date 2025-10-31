@@ -30,3 +30,19 @@ export async function getProduct(id:number):Promise<ProductResponse> {
     throw new Error('Failed fetching data')
   }
 }
+
+// Login Helper
+export async function login(email: string, password: string) {
+  try {
+    const res = await fetch(`${DATABASE_API}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+
+    return await res.json();
+  } catch (err) {
+    console.error('Failed log in :', err)
+    throw new Error('Failed log in, please try again later')
+  }
+}
