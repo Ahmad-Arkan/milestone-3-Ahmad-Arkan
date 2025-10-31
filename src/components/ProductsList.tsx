@@ -47,7 +47,7 @@ export default function Items ({title, searchParam, productsData}: ProductsType)
       <ul className={styles.parent}>
         {products.map((products: ProductResponse) => (
           <li className={styles.product} key={products.id}>
-            <Link href={`/${products.id}`}>
+            <Link href={`/${products.id}`} prefetch={false}>
               <Image
                 src={
                   products?.images?.[0]?.startsWith('https://placehold.co/')
@@ -64,11 +64,11 @@ export default function Items ({title, searchParam, productsData}: ProductsType)
               />
             </Link>
             <div className={styles.details}>
-              <Link className={`${styles.title}`} key={products.id} href={`/${products.id}`}>
+              <Link className={`${styles.title}`} key={products.id} href={`/${products.id}`} prefetch={false}>
                 {products.title || "Unnamed Item"}
               </Link>
               <div className={styles.detail}>
-                <Link className={`${styles.price}`} key={products.id} href={`/${products.id}`}>
+                <Link className={`${styles.price}`} key={products.id} href={`/${products.id}`} prefetch={false}>
                   ${products.price || "???"}
                 </Link>
                 <button

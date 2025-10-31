@@ -11,7 +11,7 @@ export default function ProductManagement() {
   const [products, setProducts] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const handleDelete = async (productId)=> {
+  const handleDelete = async (productId: number)=> {
     const confirmDelete = confirm(`Are you sure to delete this product with ID ${productId}?`);
     if (!confirmDelete) return;
     try {
@@ -26,8 +26,7 @@ export default function ProductManagement() {
       }
 
       alert(`Product with ID ${productId} has been deleted.`)
-      const updated = await res.json()
-      console.log("updated",updated)
+      await getProducts().then((data) => setProducts(data));
     } catch (err) {
       console.error("Error", err)
     }
@@ -38,7 +37,7 @@ export default function ProductManagement() {
       setProducts(data);
       setLoading(false);
     })
-  }, [handleDelete])
+  }, [])
 
   return (
     <section>
@@ -46,7 +45,7 @@ export default function ProductManagement() {
       <ul className={styles.parent}>
         {products.map((products: ProductResponse) => (
           <li className={styles.product} key={products.id}>
-            <Link href={`/${products.id}`}>
+            <Link href={`/${products.id}`} prefetch={false}>
               <Image
                 src={
                   products?.images?.[0]?.startsWith('https://placehold.co/')
@@ -63,16 +62,16 @@ export default function ProductManagement() {
               />
             </Link>
             <div className={styles.details}>
-              <Link className={`${styles.details} ${styles.title}`} key={products.id} href={`/${products.id}`}>
+              <Link className={`${styles.details} ${styles.title}`} key={products.id} href={`/${products.id}`} prefetch={false}>
                 {products.title || "Unnamed Item"}
               </Link>
               <div className={styles.detail}>
-                <Link className={`${styles.price}`} key={products.id} href={`/${products.id}`}>
+                <Link className={`${styles.price}`} key={products.id} href={`/${products.id}`} prefetch={false}>
                   ${products.price || "???"}
                 </Link>
               </div>
             </div>
-            <Link href={`/admin/edit/${products.id}`}><button className={'button'}>Edit</button></Link>
+            <Link href={`/admin/edit/${products.id}`} prefetch={false}><button className={'button'}>Edit</button></Link>
             <button onClick={()=>handleDelete(products.id)} className={'delete'}>Delete</button>
           </li>
         ))}

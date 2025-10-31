@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "@/styles/Navbar.module.css"
 import Icon from "@/components/Icons";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Navbar () {
   const [keyword, setKeyword] = useState<string>('');
@@ -14,6 +14,12 @@ export default function Navbar () {
     if (!keyword.trim()) return;
     router.push(`/search?keyword=${encodeURIComponent(keyword)}`);
   };
+
+  const pathName = usePathname()
+  const hiddenPaths = ["/edit", "/auth"];
+  const hideNav = hiddenPaths.some(path => pathName.startsWith(path));
+
+  if (hideNav) return null;
 
   return (
     <nav className={styles.navbar}>
@@ -36,8 +42,7 @@ export default function Navbar () {
         </button>
         <div className={styles.account}>
           <Link href="/admin"><button>Admin Page</button></Link>
-          {/* <button>Sign Up</button>
-          <button>Login</button> */}
+          <Link href="/auth"><button>Login</button></Link>
         </div>
       </menu>
       <menu className={styles.menu2}>
